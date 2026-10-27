@@ -133,7 +133,7 @@ export function AskCopper({ aiConfigured }: { aiConfigured: boolean }) {
           showCloseButton={false}
           className="gap-0 p-0 data-[side=right]:w-full data-[side=right]:sm:max-w-md"
         >
-          <div className="bg-chart-5 text-white">
+          <div className="bg-[#1c2333] text-white">
             <div className="flex items-center gap-3 p-4">
               <span className="bg-primary flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-full">
                 <Image

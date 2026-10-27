@@ -127,7 +127,8 @@ export async function askCopper(
       // The stream ended normally. An empty reply is still "done", with a
       // short apology; a real reply is never added to.
       done(snapshot("done", reply === "" ? APOLOGY : reply));
-    } catch {
+    } catch (error) {
+      console.error("[ask-copper]", error);
       done(snapshot("error", reply === "" ? APOLOGY : reply));
     }
   }

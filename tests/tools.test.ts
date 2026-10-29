@@ -1,10 +1,37 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import {
   calculateCost,
   calculateCostInput,
   checkAvailability,
   copperTools,
 } from "@/lib/copper/assistant/tools";
+
+// A fake stock list, so the test needs no database.
+vi.mock("@/lib/copper/inventory", () => ({
+  readInventory: async () => [
+    {
+      sku: "CH-TEA",
+      product: "Copper Home",
+      color: "Patina Teal",
+      units_in_stock: 6,
+      next_shipment: "2026-11-06",
+    },
+    {
+      sku: "CN-DSA",
+      product: "Copper Notes",
+      color: "Desert Sand",
+      units_in_stock: 92,
+      next_shipment: "2026-11-13",
+    },
+    {
+      sku: "CN-NSK",
+      product: "Copper Notes",
+      color: "Night Sky",
+      units_in_stock: 0,
+      next_shipment: "2026-11-14",
+    },
+  ],
+}));
 
 describe("calculate_cost", () => {
   it("counts Copper Plus once: Copper Home, annual, 2 years is $307", () => {
